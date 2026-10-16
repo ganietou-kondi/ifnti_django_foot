@@ -19,3 +19,19 @@ def test_deux_equipe_ne_porte_pas_le_meme_nom(db):
 def test_une_equipe_saffiche_par_son_nom(db):
     equipe=Equipe.objects.create(nom="Les Aigles",promo="L2")
     assert str(equipe)=="Les Aigles"
+
+
+def test_un_match_oppose_une_equipe_a_domicile_et_une_equipe_visiteuse_a_une_date(db):
+    equipe_domiciles=Equipe.objects.create(nom="Gouni",promo="L2") 
+    equipe_visiteurs=Equipe.objects.create(nom="Guepard",promo="L3")   
+    
+
+    match=Match.objects.create(
+        equipe_domiciles=equipe_domiciles,
+        equipe_visiteurs=equipe_visiteurs,
+        date="2024-06-01"
+
+    )
+    assert match.equipe_domiciles==equipe_domiciles
+    assert match.equipe_visiteurs==equipe_visiteurs
+    assert match.date=="2024-06-01"    
