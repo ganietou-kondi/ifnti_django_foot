@@ -5,7 +5,8 @@ class Equipe(models.Model):
     promo = models.CharField(max_length=120)
 
     
-
+    def __str__(self):
+        return self.nom 
 
 class Meta:
     pass
