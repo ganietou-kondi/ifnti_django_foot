@@ -6,8 +6,5 @@ def test_une_equipe_a_un_nom_et_une_promo(db):
 
 
 
-def test_une_equipe_a_un_nom_et_une_promotion(db):
-    promotion=[("l1","L1"),("l2","L2"),("l3","L3")]
-    equipe=Equipe.objects.create(nom="Les Lions",promo="L4")
-    assert equipe.nom
-    assert equipe.promo
+def test_deux_equipe_ne_porte_pas_le_meme_nom(db):
+    
