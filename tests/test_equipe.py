@@ -11,6 +11,17 @@ def test_une_equipe_a_un_nom_et_une_promo(db):
 
 
 def test_deux_equipe_ne_porte_pas_le_meme_nom(db):
+<<<<<<< HEAD
     Equipe.objects.create(nom="Les Eperviers",promo="L2") 
     with pytest.raises(Exception):  # noqa: B017
         Equipe.objects.create(nom="Les Eperviers",promo="L3")
+=======
+    equipe=Equipe.objects.create(nom="Les Eperviers",promo="L2")
+    with pytest.raises(Exception):
+        Equipe.objects.create(nom="Les Eperviers",promo="L3")
+
+
+def test_une_equipe_saffiche_par_son_nom(db):
+    equipe=Equipe.objects.create(nom="Les Aigles",promo="L2")
+    assert str(equipe)=="Les Aigles"
+>>>>>>> 7814853fac233daa8eff829c88fa085c73487d34
