@@ -20,7 +20,7 @@ class Match(models.Model):
     est_joue = models.BooleanField()
 
     def __str__(self):
-        if self.statut:
+        if self.est_joue:
             return f"{self.equipe_domiciles.nom }---{ self.equipe_visiteurs.nom}: {self.score_domicile}:{self.score_exterieure}"
         else:
             return f"{self.equipe_domiciles.nom }---{ self.equipe_visiteurs.nom}: à jouer"
