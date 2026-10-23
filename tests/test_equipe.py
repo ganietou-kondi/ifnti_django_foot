@@ -37,6 +37,7 @@ def test_un_match_oppose_une_equipe_a_domicile_et_une_equipe_visiteuse_a_une_dat
     assert match.date=="2024-06-01"   
 
 
+
 def test_un_match_nest_pas_jouer_son_score_inconnus(db):
     lions = Equipe.objects.create(nom="Les Lions", promo="L2")
     aigles = Equipe.objects.create(nom="Les Aigles", promo="L2")
@@ -65,7 +66,7 @@ def test_match_score_de_lequipe_qui_reçoit(db):
     match_joue = Match.objects.create(
         equipe_domiciles=lions,
         equipe_visiteurs=aigles,
-        equipe_domiciles=2,
+        score_domiciles=2,
         score_exterieur=1,
         est_joue=True
     )

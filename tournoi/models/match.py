@@ -15,10 +15,15 @@ class Match(models.Model):
             related_name="equipe_visiteurs"
         )
 
-    score = models.CharField(null=True)
+    score_domicile = models.CharField(null=True)
+    score_exterieure = models.CharField(null=True)
+    est_joue = models.BooleanField()
 
     def __str__(self):
-        return f"{self.equipe_domiciles.nom }---{ self.equipe_visiteurs.nom}: {self.score}"
+        if self.statut:
+            return f"{self.equipe_domiciles.nom }---{ self.equipe_visiteurs.nom}: {self.score_domicile}:{self.score_exterieure}"
+        else:
+            return f"{self.equipe_domiciles.nom }---{ self.equipe_visiteurs.nom}: à jouer"
 
 class Meta:
     pass
