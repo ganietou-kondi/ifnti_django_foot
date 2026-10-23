@@ -1,6 +1,6 @@
 import pytest
 
-from tournoi.models import Equipe
+from tournoi.models import Equipe, Match
 
 
 def test_une_equipe_a_un_nom_et_une_promo(db):
@@ -35,3 +35,5 @@ def test_un_match_oppose_une_equipe_a_domicile_et_une_equipe_visiteuse_a_une_dat
     assert match.equipe_domiciles==equipe_domiciles
     assert match.equipe_visiteurs==equipe_visiteurs
     assert match.date=="2024-06-01"    
+
+
