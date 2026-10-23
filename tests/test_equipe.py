@@ -34,5 +34,51 @@ def test_un_match_oppose_une_equipe_a_domicile_et_une_equipe_visiteuse_a_une_dat
     )
     assert match.equipe_domiciles==equipe_domiciles
     assert match.equipe_visiteurs==equipe_visiteurs
-    assert match.date=="2024-06-01"    
+    assert match.date=="2024-06-01"   
+
+
+def test_un_match_nest_pas_jouer_son_score_inconnus(db):
+    lions = Equipe.objects.create(nom="Les Lions", promo="L2")
+    aigles = Equipe.objects.create(nom="Les Aigles", promo="L2")
+
+    match_joue = Match.objects.create(
+        equipe_domiciles=lions,
+        equipe_visiteurs=aigles,
+        score_domicile=2,
+        score_exterieur=1,
+        est_joue=True  
+    )
+    assert str(match_joue) == "Les Lions – Les Aigles : 2-1"
+
+    match_a_jouer = Match.objects.create(
+        equipe_domiciles=lions,
+        equipe_visiteurs=aigles,
+        est_joue=False
+    )
+    assert str(match_a_jouer) == "Les Lions – Les Aigles : à jouer"
+
+
+def test_match_score_de_lequipe_qui_reçoit(db):
+    lions = Equipe.objects.create(nom="Les Lions", promo="L2")
+    aigles = Equipe.objects.create(nom="Les Aigles", promo="L2")
+
+    match_joue = Match.objects.create(
+        equipe_domiciles=lions,
+        equipe_visiteurs=aigles,
+        equipe_domiciles=2,
+        score_exterieur=1,
+        est_joue=True
+    )
+    assert str(match_joue) == "Les Lions – Les Aigles : 2-1"
+
+    match_a_jouer = Match.objects.create(
+        equipe_domiciles=lions,
+        equipe_visiteurs=aigles,
+        score_domicile=None,
+        score_exterieur=None,
+        est_joue=False
+    )
+    assert str(match_a_jouer) == "Les Lions – Les Aigles : à jouer"
+    assert match_a_jouer.score_domicile is None
+    assert match_a_jouer.score_exterieur is None
 
