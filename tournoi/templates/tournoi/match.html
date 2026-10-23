@@ -1,0 +1,18 @@
+{% extends "tournoi/base.html"%}
+{% block contenu %}
+
+<table>
+    {% for match in matchs %}
+    <tr>
+        <td>{{ match.date }}</td>
+        <td>{{ match.equipe_domiciles.nom }} vs {{ match.equipe_visiteurs.nom}}</td>
+        <td>{{ match.score_domicile }} - {{match.score_exterieure}}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock contenu %}
+
+
+
+

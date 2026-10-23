@@ -53,7 +53,7 @@ def test_un_match_nest_pas_jouer_son_score_inconnus(db):
         est_joue=True ,
         date="2024-06-01"
     )
-    assert str(match_joue) == "Les Lions---Les Aigles: 2:1"
+    assert str(match_joue) == "Les Lions---Les Aigles: 2-1"
 
     match_a_jouer = Match.objects.create(
         equipe_domiciles=lions,
@@ -73,17 +73,17 @@ def test_match_score_de_lequipe_qui_reçoit(db):
     match_joue = Match.objects.create(
         equipe_domiciles=lions,
         equipe_visiteurs=aigles,
-        score_domiciles=2,
+        score_domicile=2,
         score_exterieure=1,
         est_joue=True,
         date="2024-06-01"
     )
-    assert str(match_joue) == "Les Lions---Les Aigles: 2:1"
+    assert str(match_joue) == "Les Lions---Les Aigles: 2-1"
 
     match_a_jouer = Match.objects.create(
         equipe_domiciles=lions,
         equipe_visiteurs=aigles,
-        score_domiciles=None,
+        score_domicile=None,
         score_exterieure=None,
         est_joue=False,
         date="2024-06-01"
