@@ -1,4 +1,5 @@
-from django.db import models  # noqa: F401
+from django.db import models
+
 
 class Equipe(models.Model):
     nom = models.CharField(max_length=120, unique=True)

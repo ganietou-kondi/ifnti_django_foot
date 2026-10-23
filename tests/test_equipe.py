@@ -1,6 +1,6 @@
 import pytest
 
-from tournoi.models import Equipe
+from tournoi.models import Equipe, Match
 
 
 def test_une_equipe_a_un_nom_et_une_promo(db):
